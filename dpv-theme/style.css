@@ -425,6 +425,18 @@ body.admin-bar .navbar { top: 32px; }
 	.side-item { grid-template-columns: 96px minmax(0, 1fr); }
 }
 
+/* Laptop/máy tính: phần nội dung chữ thụt vào 2cm hai bên (ảnh, bảng ảnh, khối sản phẩm giữ nguyên bề rộng) */
+@media (min-width: 1025px) {
+	body .entry-header,
+	body .entry-content > :is(p, h1, h2, h3, h4, h5, h6, ul, ol, blockquote, pre, .wp-block-heading, .wp-block-list) { padding-left: 2cm; padding-right: 2cm; }
+	body .entry-content > p:has(> img:only-child),
+	body .entry-content > p:has(> a:only-child > img:only-child) { padding-left: 0; padding-right: 0; }
+	body .entry-content > table { width: calc(100% - 4cm); margin-left: 2cm; margin-right: 2cm; }
+	body .home-content > :is(p, h1, h2, h3, h4, h5, h6, ul, ol, blockquote, .wp-block-heading, .wp-block-list) { padding-left: calc(20px + 2cm); padding-right: calc(20px + 2cm); }
+	body .home-content > .intro { padding-left: calc(20px + 2cm); padding-right: calc(20px + 2cm); }
+	body .home-content > .intro :is(p, ul, ol, h2, h3) { max-width: none; }
+}
+
 /* Form bình luận */
 .comment-form p { margin: 0 0 14px; }
 .comment-form label { display: block; font-weight: 600; margin-bottom: 4px; }
