@@ -133,6 +133,16 @@ body.admin-bar .navbar { top: 32px; }
 .cat-list .sub-menu a:hover { background: var(--dpv-soft); color: var(--dpv-primary-dark); }
 
 /* ---------- Trang chủ ---------- */
+/* Khối WordPress có sẵn (Tiêu đề, Đoạn văn, Danh sách, Ảnh…) đặt trong trang chủ: căn đúng bề rộng khung */
+.home-content > *:not(section):not(.alignfull) { max-width: var(--dpv-max); margin-left: auto; margin-right: auto; padding-left: 20px; padding-right: 20px; }
+.home-content > .intro { padding-top: 36px; padding-bottom: 12px; }
+.home-content > .intro p, .home-content > .intro ul, .home-content > .intro ol, .home-content > .intro h2, .home-content > .intro h3 { max-width: 940px; margin-left: auto; margin-right: auto; }
+.home-content > .intro h1 { font-size: 30px; font-weight: 800; margin-bottom: 16px; }
+.home-content .has-text-align-center { text-align: center; }
+.home-content > h1 { font-size: 30px; font-weight: 800; }
+.home-content > h2, .home-content > h3 { margin-top: 1.4em; }
+.home-content .wp-block-list { list-style: disc; padding-left: 1.4em; margin-bottom: 1em; }
+.home-content > figure img { border-radius: var(--dpv-radius); }
 .hero { display: grid; grid-template-columns: 280px minmax(0, 1fr) 300px; gap: 20px; padding-top: 16px; padding-bottom: 8px; align-items: start; }
 .hero__cats .cat-panel { border-radius: 0 0 var(--dpv-radius) var(--dpv-radius); margin-top: -16px; padding-top: 10px; }
 
@@ -380,7 +390,8 @@ body.admin-bar .navbar { top: 32px; }
 	.woocommerce ul.products li.product .button { margin: 8px 10px 0; padding: 9px 12px; font-size: 13.5px; }
 
 	.intro { padding-top: 26px; }
-	.intro__h1 { font-size: 22px; }
+	.intro__h1, .home-content > h1, .home-content > .intro h1 { font-size: 22px; }
+	.home-content > *:not(section):not(.alignfull) { padding-left: 16px; padding-right: 16px; }
 	.archive-title, .entry-title { font-size: 24px; }
 	.entry-content { font-size: 16px; }
 	.entry-content h2 { font-size: 21px; }

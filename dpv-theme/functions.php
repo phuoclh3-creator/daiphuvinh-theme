@@ -18,6 +18,7 @@ require_once DPV_DIR . '/inc/customizer.php';
 require_once DPV_DIR . '/inc/seo.php';
 require_once DPV_DIR . '/inc/schema.php';
 require_once DPV_DIR . '/inc/template-tags.php';
+require_once DPV_DIR . '/inc/home-blocks.php';
 if ( class_exists( 'WooCommerce' ) ) {
 	require_once DPV_DIR . '/inc/woocommerce.php';
 }
