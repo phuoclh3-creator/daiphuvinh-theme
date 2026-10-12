@@ -108,6 +108,49 @@ $name  = dpv_opt( 'dpv_biz_name' ) ?: get_bloginfo( 'name' );
 </div>
 <?php endif; ?>
 
+<?php
+// Thanh tab cố định chân trang (chỉ hiện trên điện thoại): Cửa hàng · Tin tức · Hotline · Đường đi.
+$dir_url = dpv_directions_url();
+$tabs    = array(
+	array(
+		'url'   => dpv_shop_url(),
+		'label' => __( 'Cửa hàng', 'dpv-theme' ),
+		'ext'   => false,
+		'icon'  => '<path d="M2.5 3.5h3l2.2 10.6a1 1 0 0 0 1 .8h8.6a1 1 0 0 0 1-.76L19.8 7H6"/><circle cx="9.5" cy="19" r="1.3"/><circle cx="17" cy="19" r="1.3"/>',
+	),
+	array(
+		'url'   => dpv_news_url(),
+		'label' => __( 'Tin tức', 'dpv-theme' ),
+		'ext'   => false,
+		'icon'  => '<path d="M6 3.5h11a1 1 0 0 1 1 1v14.5H7.2A2.2 2.2 0 0 0 5 21.2V4.5a1 1 0 0 1 1-1z"/><path d="M5 19.2A2.2 2.2 0 0 1 7.2 17H18"/>',
+	),
+);
+if ( $phone ) {
+	$tabs[] = array(
+		'url'   => 'tel:' . dpv_tel( $phone ),
+		'label' => __( 'Hotline', 'dpv-theme' ),
+		'ext'   => false,
+		'icon'  => '<path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/>',
+	);
+}
+if ( $dir_url ) {
+	$tabs[] = array(
+		'url'   => $dir_url,
+		'label' => __( 'Đường đi', 'dpv-theme' ),
+		'ext'   => true,
+		'icon'  => '<path d="M12 21s6.5-5.6 6.5-11a6.5 6.5 0 0 0-13 0C5.5 15.4 12 21 12 21z"/><circle cx="12" cy="10" r="2.3"/>',
+	);
+}
+?>
+<nav class="tabbar" aria-label="<?php esc_attr_e( 'Điều hướng nhanh', 'dpv-theme' ); ?>">
+	<?php foreach ( $tabs as $t ) : ?>
+		<a class="tabbar__item" href="<?php echo esc_url( $t['url'], array( 'http', 'https', 'tel' ) ); ?>"<?php echo $t['ext'] ? ' target="_blank" rel="noopener"' : ''; ?>>
+			<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><?php echo $t['icon']; // phpcs:ignore WordPress.Security.EscapeOutput -- SVG tĩnh trong theme. ?></svg>
+			<span><?php echo esc_html( $t['label'] ); ?></span>
+		</a>
+	<?php endforeach; ?>
+</nav>
+
 <?php wp_footer(); ?>
 </body>
 </html>

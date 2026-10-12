@@ -155,3 +155,42 @@ function dpv_primary_category( $post_id ) {
 	}
 	return $cats[0];
 }
+
+/**
+ * Link "Đường đi": ưu tiên link Google Maps nhập tay, nếu không thì tạo từ địa chỉ.
+ */
+function dpv_directions_url() {
+	$u = dpv_opt( 'dpv_map_url' );
+	if ( '' !== $u ) {
+		return $u;
+	}
+	$addr = dpv_opt( 'dpv_address' );
+	if ( '' === $addr ) {
+		return '';
+	}
+	return 'https://www.google.com/maps/dir/?api=1&destination=' . rawurlencode( $addr );
+}
+
+/**
+ * Link "Cửa hàng" (trang shop WooCommerce, nếu không có thì trang chủ).
+ */
+function dpv_shop_url() {
+	if ( function_exists( 'wc_get_page_permalink' ) ) {
+		$u = wc_get_page_permalink( 'shop' );
+		if ( $u ) {
+			return $u;
+		}
+	}
+	return home_url( '/' );
+}
+
+/**
+ * Link "Tin tức": trang bài viết nếu có, nếu không thì chuyên mục cẩm nang.
+ */
+function dpv_news_url() {
+	$pid = (int) get_option( 'page_for_posts' );
+	if ( $pid ) {
+		return get_permalink( $pid );
+	}
+	return dpv_cat_link( dpv_opt( 'dpv_cat_news', 'cam-nang' ) );
+}

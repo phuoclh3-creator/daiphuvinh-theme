@@ -24,6 +24,7 @@ function dpv_customize( WP_Customize_Manager $wp_customize ) {
 		'dpv_email'    => array( __( 'Email', 'dpv-theme' ), 'sanitize_email', 'text' ),
 		'dpv_zalo'     => array( __( 'Zalo (số điện thoại hoặc link)', 'dpv-theme' ), 'sanitize_text_field', 'text' ),
 		'dpv_address'  => array( __( 'Địa chỉ', 'dpv-theme' ), 'sanitize_text_field', 'text' ),
+		'dpv_map_url'  => array( __( 'Link chỉ đường Google Maps (không bắt buộc – để trống sẽ tự tạo từ Địa chỉ)', 'dpv-theme' ), 'esc_url_raw', 'url' ),
 		'dpv_city'     => array( __( 'Tỉnh/Thành (schema)', 'dpv-theme' ), 'sanitize_text_field', 'text' ),
 		'dpv_hours'    => array( __( 'Giờ làm việc (vd: Mo-Sa 07:30-17:30)', 'dpv-theme' ), 'sanitize_text_field', 'text' ),
 		'dpv_facebook' => array( __( 'Facebook URL', 'dpv-theme' ), 'esc_url_raw', 'url' ),
