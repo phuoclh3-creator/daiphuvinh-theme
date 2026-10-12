@@ -202,3 +202,12 @@ add_filter( 'get_the_archive_title', function ( $title ) {
 	}
 	return $title;
 } );
+
+/**
+ * Logo chỉ là biểu tượng, tên site đã có bằng chữ ngay cạnh → bỏ alt để trình đọc không đọc trùng.
+ */
+function dpv_custom_logo_attrs( $attr ) {
+	$attr['alt'] = '';
+	return $attr;
+}
+add_filter( 'get_custom_logo_image_attributes', 'dpv_custom_logo_attrs' );

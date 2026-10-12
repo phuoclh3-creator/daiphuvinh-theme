@@ -58,7 +58,9 @@ button { cursor: pointer; }
 .brand__text { display: flex; flex-direction: column; line-height: 1.15; }
 .brand__name { font-size: 20px; font-weight: 800; color: var(--dpv-text); letter-spacing: .01em; }
 .brand__tag { font-size: 12px; color: var(--dpv-muted); }
-.custom-logo-link img { max-height: 64px; width: auto; }
+.brand__text { min-width: 0; }
+.custom-logo-link { display: inline-flex; flex: none; }
+.custom-logo-link img { width: 64px; height: 64px; max-height: none; border-radius: 50%; object-fit: cover; }
 
 .searchform { position: relative; display: flex; align-items: center; background: #fff; border: 2px solid var(--dpv-text); border-radius: 999px; overflow: hidden; }
 .searchform__input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; padding: 12px 20px; font-size: 16px; }
@@ -78,7 +80,7 @@ button { cursor: pointer; }
 	.header-top { padding-top: 40px; padding-bottom: 40px; gap: 36px; }
 	.brand { gap: 20px; }
 	.brand__mark svg { width: 100px; height: 100px; }
-	.custom-logo-link img { max-height: 110px; }
+	.custom-logo-link img { width: 92px; height: 92px; }
 	.brand__name { font-size: 32px; }
 	.brand__tag { font-size: 15px; margin-top: 4px; }
 	.header-contact { gap: 12px; }
@@ -318,7 +320,8 @@ body.admin-bar .navbar { top: 32px; }
 	.header-actions { grid-column: auto; order: 2; gap: 0; }
 	.brand { gap: 10px; }
 	.brand__mark svg { width: 40px; height: 40px; }
-	.custom-logo-link img { max-height: 44px; }
+	.custom-logo-link img { width: 44px; height: 44px; }
+	.brand__tag { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.3; }
 	.brand__name { font-size: 17px; }
 	.brand__tag { font-size: 11px; }
 	.cart-link { width: 42px; height: 42px; align-items: center; justify-content: center; border-radius: 50%; background: var(--dpv-soft); }
