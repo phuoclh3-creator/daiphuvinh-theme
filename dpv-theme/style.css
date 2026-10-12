@@ -140,7 +140,7 @@ body.admin-bar .navbar { top: 32px; }
 /* Khối WordPress có sẵn (Tiêu đề, Đoạn văn, Danh sách, Ảnh…) đặt trong trang chủ: căn đúng bề rộng khung */
 .home-content > *:not(section):not(.alignfull) { max-width: var(--dpv-max); margin-left: auto; margin-right: auto; padding-left: var(--dpv-gutter); padding-right: var(--dpv-gutter); }
 .home-content > .intro { padding-top: 36px; padding-bottom: 12px; }
-.home-content > .intro p, .home-content > .intro ul, .home-content > .intro ol, .home-content > .intro h2, .home-content > .intro h3 { max-width: 940px; margin-left: auto; margin-right: auto; }
+.home-content > .intro :is(p, ul, ol, h2, h3) { max-width: none; margin-left: 0; margin-right: 0; }
 .home-content > .intro h1 { font-size: 30px; font-weight: 800; margin-bottom: 16px; }
 .home-content .has-text-align-center { text-align: center; }
 .home-content > h1 { font-size: 30px; font-weight: 800; }
@@ -212,7 +212,7 @@ body.admin-bar .navbar { top: 32px; }
 /* Giới thiệu */
 .intro { padding-top: 36px; padding-bottom: 12px; }
 .intro__h1 { font-size: 30px; font-weight: 800; text-align: center; margin-bottom: 16px; }
-.intro__body { max-width: 940px; margin: 0 auto; }
+.intro__body { max-width: none; margin: 0; }
 
 /* ---------- Trang trong ---------- */
 .page-wrap { padding-top: 22px; padding-bottom: 56px; }
