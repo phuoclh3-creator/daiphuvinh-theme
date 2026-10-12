@@ -1,0 +1,8 @@
+---
+deployment:
+  tasks:
+    # Thư mục gốc WordPress của daiphuvinh.vn trên host (\$HOME = thư mục tài khoản cPanel)
+    - export THEMES=$HOME/daiphuvinh.vn/wp-content/themes
+    - /bin/mkdir -p $THEMES/dpv-theme $THEMES/dpv-child
+    - /bin/cp -Rf dpv-theme/. $THEMES/dpv-theme/
+    - /bin/cp -Rf dpv-child/. $THEMES/dpv-child/

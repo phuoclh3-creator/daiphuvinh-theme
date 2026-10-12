@@ -1,0 +1,32 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "landingPage": "/",
+  "preferredVersions": {
+    "php": "8.3",
+    "wp": "latest"
+  },
+  "features": {
+    "networking": true
+  },
+  "steps": [
+    {
+      "step": "login",
+      "username": "admin",
+      "password": "password"
+    },
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "wordpress.org/plugins",
+        "slug": "woocommerce"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php ini_set('display_errors','1'); error_reporting(E_ALL); try { require '/wordpress/wp-load.php'; require '/preview/preview-seed.php'; echo 'SEED_OK'; } catch (Throwable $e) { echo 'SEED_ERR: '.$e->getMessage().' @ '.$e->getFile().':'.$e->getLine(); }"
+    }
+  ]
+}
