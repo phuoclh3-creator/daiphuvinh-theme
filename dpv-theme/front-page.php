@@ -32,6 +32,14 @@ $project_q  = dpv_posts_by_cat( dpv_opt( 'dpv_cat_projects', 'du-an' ), 3 );
 $news_q     = dpv_posts_by_cat( dpv_opt( 'dpv_cat_news', 'cam-nang' ), 4 );
 $home_h1    = dpv_opt( 'dpv_home_h1' ) ?: get_bloginfo( 'name' );
 $home_intro = dpv_opt( 'dpv_home_intro' );
+// Ưu tiên nội dung soạn trong trang "Trang chủ" (trình soạn thảo); không có thì dùng đoạn giới thiệu trong Tùy biến.
+$home_page_content = '';
+if ( is_page() ) {
+	$home_post = get_queried_object();
+	if ( $home_post instanceof WP_Post && '' !== trim( wp_strip_all_tags( $home_post->post_content ) ) ) {
+		$home_page_content = apply_filters( 'the_content', $home_post->post_content );
+	}
+}
 $cat_slugs  = array_filter( array_map( 'sanitize_title', explode( ',', (string) dpv_opt( 'dpv_home_cats', 'chong-tham,bot-tret-tuong,keo-dan-gach,tam-cemboard' ) ) ) );
 $defaults   = dpv_default_product_cats();
 ?>
@@ -183,7 +191,9 @@ $defaults   = dpv_default_product_cats();
 		<h1 class="intro__h1" id="home-h1"><?php echo esc_html( $home_h1 ); ?></h1>
 		<div class="intro__body entry-content">
 			<?php
-			if ( $home_intro ) {
+			if ( $home_page_content ) {
+				echo $home_page_content; // phpcs:ignore WordPress.Security.EscapeOutput -- đã qua bộ lọc the_content.
+			} elseif ( $home_intro ) {
 				echo wp_kses_post( wpautop( $home_intro ) );
 			} else {
 				echo '<p>' . esc_html__( 'Nhập đoạn giới thiệu (150–300 từ, có từ khóa chính) trong Giao diện › Tùy biến › Đại Phú Vinh – Trang chủ.', 'dpv-theme' ) . '</p>';
