@@ -25,7 +25,9 @@ Tags: e-commerce, blog, custom-logo, custom-menu, featured-images, translation-r
 	--dpv-radius: 12px;
 	--dpv-shadow: 0 6px 22px rgba(20, 24, 31, .08);
 	--dpv-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-	--dpv-max: 1320px;
+	--dpv-content: 1280px;
+	--dpv-gutter: 20px;
+	--dpv-max: calc(var(--dpv-content) + 2 * var(--dpv-gutter));
 }
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
@@ -39,7 +41,9 @@ p { margin: 0 0 1em; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 button, input { font: inherit; color: inherit; }
 button { cursor: pointer; }
-.container { width: 100%; max-width: var(--dpv-max); margin: 0 auto; padding: 0 20px; }
+.container { width: 100%; max-width: var(--dpv-max); margin: 0 auto; padding: 0 var(--dpv-gutter); }
+/* Laptop/máy tính: toàn bộ khu vực nội dung cách hai mép màn hình tối thiểu 2cm (bề rộng nội dung và ảnh không đổi) */
+@media (min-width: 1025px) { :root { --dpv-gutter: 2cm; } }
 .screen-reader-text { position: absolute !important; clip: rect(1px, 1px, 1px, 1px); width: 1px; height: 1px; overflow: hidden; white-space: nowrap; }
 .skip-link:focus { clip: auto; width: auto; height: auto; background: #fff; padding: 10px 16px; z-index: 100000; top: 8px; left: 8px; }
 :focus-visible { outline: 3px solid rgba(226, 35, 26, .45); outline-offset: 2px; }
@@ -134,7 +138,7 @@ body.admin-bar .navbar { top: 32px; }
 
 /* ---------- Trang chủ ---------- */
 /* Khối WordPress có sẵn (Tiêu đề, Đoạn văn, Danh sách, Ảnh…) đặt trong trang chủ: căn đúng bề rộng khung */
-.home-content > *:not(section):not(.alignfull) { max-width: var(--dpv-max); margin-left: auto; margin-right: auto; padding-left: 20px; padding-right: 20px; }
+.home-content > *:not(section):not(.alignfull) { max-width: var(--dpv-max); margin-left: auto; margin-right: auto; padding-left: var(--dpv-gutter); padding-right: var(--dpv-gutter); }
 .home-content > .intro { padding-top: 36px; padding-bottom: 12px; }
 .home-content > .intro p, .home-content > .intro ul, .home-content > .intro ol, .home-content > .intro h2, .home-content > .intro h3 { max-width: 940px; margin-left: auto; margin-right: auto; }
 .home-content > .intro h1 { font-size: 30px; font-weight: 800; margin-bottom: 16px; }
@@ -303,7 +307,7 @@ body.admin-bar .navbar { top: 32px; }
 }
 @media (max-width: 820px) {
 	body { font-size: 15.5px; }
-	.container { padding: 0 16px; }
+	:root { --dpv-gutter: 16px; }
 
 	/* Header gọn: logo + giỏ hàng, ô tìm kiếm full-width bên dưới */
 	.header-top { grid-template-columns: minmax(0, 1fr) auto; gap: 10px 12px; padding-top: 10px; padding-bottom: 10px; }
@@ -423,18 +427,6 @@ body.admin-bar .navbar { top: 32px; }
 	.catbtn { font-size: 13px; letter-spacing: 0; }
 	.menubtn { font-size: 13px; padding-left: 12px; margin-left: 8px; }
 	.side-item { grid-template-columns: 96px minmax(0, 1fr); }
-}
-
-/* Laptop/máy tính: phần nội dung chữ thụt vào 2cm hai bên (ảnh, bảng ảnh, khối sản phẩm giữ nguyên bề rộng) */
-@media (min-width: 1025px) {
-	body .entry-header,
-	body .entry-content > :is(p, h1, h2, h3, h4, h5, h6, ul, ol, blockquote, pre, .wp-block-heading, .wp-block-list) { padding-left: 2cm; padding-right: 2cm; }
-	body .entry-content > p:has(> img:only-child),
-	body .entry-content > p:has(> a:only-child > img:only-child) { padding-left: 0; padding-right: 0; }
-	body .entry-content > table { width: calc(100% - 4cm); margin-left: 2cm; margin-right: 2cm; }
-	body .home-content > :is(p, h1, h2, h3, h4, h5, h6, ul, ol, blockquote, .wp-block-heading, .wp-block-list) { padding-left: calc(20px + 2cm); padding-right: calc(20px + 2cm); }
-	body .home-content > .intro { padding-left: calc(20px + 2cm); padding-right: calc(20px + 2cm); }
-	body .home-content > .intro :is(p, ul, ol, h2, h3) { max-width: none; }
 }
 
 /* Form bình luận */
