@@ -37,7 +37,7 @@ $cart_url  = $has_woo ? wc_get_cart_url() : '';
 					<svg viewBox="0 0 48 48" width="52" height="52" aria-hidden="true" focusable="false"><circle cx="24" cy="24" r="24" fill="currentColor"/><path d="M13 35V15h14v6M13 35h20V22l-6-5" fill="none" stroke="#fff" stroke-width="2.6" stroke-linejoin="round"/><path d="M24 35v-7h5v7" fill="none" stroke="#fff" stroke-width="2.6"/></svg>
 				</a>
 			<?php endif; ?>
-			<div class="brand__text">
+			<div class="brand__text<?php echo has_custom_logo() ? ' screen-reader-text' : ''; ?>"><?php /* Có logo ảnh: ẩn chữ bằng CSS nhưng vẫn giữ cho trình đọc/SEO. */ ?>
 				<a class="brand__name" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 				<?php if ( get_bloginfo( 'description' ) ) : ?>
 					<span class="brand__tag"><?php bloginfo( 'description' ); ?></span>
