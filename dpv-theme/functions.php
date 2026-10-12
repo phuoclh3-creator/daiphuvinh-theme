@@ -94,13 +94,13 @@ add_action( 'wp_enqueue_scripts', 'dpv_assets' );
  * Biến CSS màu chủ đạo lấy từ Customizer.
  */
 function dpv_inline_css_vars() {
-	$primary = sanitize_hex_color( get_theme_mod( 'dpv_primary', '#2272ad' ) );
-	$dark    = sanitize_hex_color( get_theme_mod( 'dpv_primary_dark', '#17598a' ) );
+	$primary = sanitize_hex_color( get_theme_mod( 'dpv_primary', '#e2231a' ) );
+	$dark    = sanitize_hex_color( get_theme_mod( 'dpv_primary_dark', '#b81a13' ) );
 	if ( ! $primary ) {
-		$primary = '#2272ad';
+		$primary = '#e2231a';
 	}
 	if ( ! $dark ) {
-		$dark = '#17598a';
+		$dark = '#b81a13';
 	}
 	return ":root{--dpv-primary:{$primary};--dpv-primary-dark:{$dark};}";
 }

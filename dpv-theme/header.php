@@ -20,7 +20,7 @@ $cart_url  = $has_woo ? wc_get_cart_url() : '';
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="<?php echo esc_attr( get_theme_mod( 'dpv_primary', '#2272ad' ) ); ?>">
+<meta name="theme-color" content="<?php echo esc_attr( get_theme_mod( 'dpv_primary', '#e2231a' ) ); ?>">
 <link rel="profile" href="https://gmpg.org/xfn/11">
 <?php wp_head(); ?>
 </head>

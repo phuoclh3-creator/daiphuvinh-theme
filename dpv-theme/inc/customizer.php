@@ -131,12 +131,12 @@ function dpv_customize( WP_Customize_Manager $wp_customize ) {
 	) );
 
 	/* ---------- Màu sắc ---------- */
-	$wp_customize->add_setting( 'dpv_primary', array( 'default' => '#2272ad', 'sanitize_callback' => 'sanitize_hex_color' ) );
+	$wp_customize->add_setting( 'dpv_primary', array( 'default' => '#e2231a', 'sanitize_callback' => 'sanitize_hex_color' ) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'dpv_primary', array(
 		'label'   => __( 'Màu chủ đạo', 'dpv-theme' ),
 		'section' => 'colors',
 	) ) );
-	$wp_customize->add_setting( 'dpv_primary_dark', array( 'default' => '#17598a', 'sanitize_callback' => 'sanitize_hex_color' ) );
+	$wp_customize->add_setting( 'dpv_primary_dark', array( 'default' => '#b81a13', 'sanitize_callback' => 'sanitize_hex_color' ) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'dpv_primary_dark', array(
 		'label'   => __( 'Màu chủ đạo (đậm, khi rê chuột)', 'dpv-theme' ),
 		'section' => 'colors',
