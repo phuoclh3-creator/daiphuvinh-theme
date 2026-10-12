@@ -72,10 +72,6 @@ $cart_url  = $has_woo ? wc_get_cart_url() : '';
 					<?php $n = dpv_cart_count(); if ( $n ) : ?><span class="cart-link__n"><?php echo (int) $n; ?></span><?php endif; ?>
 				</a>
 			<?php endif; ?>
-			<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
-				<span class="screen-reader-text"><?php esc_html_e( 'Mở menu', 'dpv-theme' ); ?></span>
-				<span class="nav-toggle__bars" aria-hidden="true"></span>
-			</button>
 		</div>
 	</div>
 
@@ -94,6 +90,11 @@ $cart_url  = $has_woo ? wc_get_cart_url() : '';
 					<div class="cat-panel cat-panel--drop" id="cat-panel" hidden></div>
 				<?php endif; ?>
 			</div>
+
+			<button class="menubtn nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+				<span class="menubtn__label"><?php esc_html_e( 'Menu', 'dpv-theme' ); ?></span>
+				<span class="menubtn__bars" aria-hidden="true"></span>
+			</button>
 
 			<nav id="primary-nav" class="primary-nav" aria-label="<?php esc_attr_e( 'Menu chính', 'dpv-theme' ); ?>">
 				<?php

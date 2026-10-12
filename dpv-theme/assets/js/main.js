@@ -52,11 +52,23 @@
 	/* ---------- Menu mobile ---------- */
 	var toggle = document.querySelector( '.nav-toggle' );
 	var nav = document.getElementById( 'primary-nav' );
+	function closeNav() {
+		if ( nav && toggle ) {
+			nav.classList.remove( 'is-open' );
+			toggle.setAttribute( 'aria-expanded', 'false' );
+		}
+	}
 	if ( toggle && nav ) {
 		toggle.addEventListener( 'click', function () {
-			var open = nav.classList.toggle( 'is-open' );
+			var open = ! nav.classList.contains( 'is-open' );
+			nav.classList.toggle( 'is-open', open );
 			toggle.setAttribute( 'aria-expanded', open ? 'true' : 'false' );
+			if ( open && window.dpvCloseCat ) { window.dpvCloseCat(); }
 		} );
+		document.addEventListener( 'click', function ( e ) {
+			if ( nav.classList.contains( 'is-open' ) && ! nav.contains( e.target ) && ! toggle.contains( e.target ) ) { closeNav(); }
+		} );
+		document.addEventListener( 'keydown', function ( e ) { if ( 'Escape' === e.key ) { closeNav(); } } );
 	}
 
 	/* ---------- Dropdown danh mục ----------
@@ -67,10 +79,16 @@
 	var catPanel = document.getElementById( 'cat-panel' );
 	var heroCats = document.getElementById( 'cat-panel-home' );
 	if ( catBtn && catPanel ) {
-		var heroVisible = !! heroCats;
+		var heroSrc = heroCats; // nguồn HTML để nhân bản vào dropdown
+		var heroVisible = !! heroCats && heroCats.offsetParent !== null; // Mobile: khối này bị ẩn → nút luôn xổ được.
 		function closeCat() {
 			catPanel.hidden = true;
 			catBtn.setAttribute( 'aria-expanded', 'false' );
+		}
+		window.dpvCloseCat = closeCat;
+		if ( heroCats && heroCats.offsetParent === null ) {
+			catBtn.classList.add( 'can-drop' );
+			heroCats = null;
 		}
 		if ( heroCats ) {
 			catBtn.classList.add( 'is-home-btn' );
@@ -88,10 +106,11 @@
 		}
 		catBtn.addEventListener( 'click', function () {
 			if ( heroCats && heroVisible ) { return; }
-			if ( heroCats && ! catPanel.firstElementChild ) {
-				catPanel.innerHTML = heroCats.innerHTML;
+			if ( heroSrc && ! catPanel.firstElementChild ) {
+				catPanel.innerHTML = heroSrc.innerHTML;
 			}
 			var show = catPanel.hidden;
+			if ( show ) { closeNav(); }
 			catPanel.hidden = ! show;
 			catBtn.setAttribute( 'aria-expanded', show ? 'true' : 'false' );
 		} );
